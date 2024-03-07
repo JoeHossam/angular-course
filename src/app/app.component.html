@@ -1,20 +1,19 @@
 <div class="top-menu">
-
-    <img class="logo"
-         src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
-
+  <img
+    class="logo"
+    src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png"
+  />
 </div>
 
+<ng-template #blankImage let-courseName="description">
+  <p class="warn">No Image for {{ courseName }}</p>
+  <img src="/assets/empty-image.png" alt="no course image" />
+</ng-template>
 
 <div class="courses">
-
-    @for (course of courses; track course.id) {
-        <course-card  [course]="course" />
-    }
-    @empty {
-        <h1>No Courses Found</h1>
-    }
-
+  @for (course of courses; track course.id) {
+  <course-card [course]="course" [noImgTpl]="blankImage" />
+  } @empty {
+  <h1>No Courses Found</h1>
+  }
 </div>
-
-
